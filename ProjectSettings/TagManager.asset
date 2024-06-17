@@ -8,6 +8,7 @@ TagManager:
   - RightBorder
   - BlueOctane
   - RedOctane
+  - Ball
   layers:
   - Default
   - TransparentFX

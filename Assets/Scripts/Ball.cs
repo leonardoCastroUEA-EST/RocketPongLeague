@@ -6,11 +6,12 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private int _ballSpeed;
-    [SerializeField] private Vector2 [] _startDirection;
+    [SerializeField] private Vector2[] _startDirection;
     [SerializeField] private AudioSource _ballSound;
     [SerializeField] private TrailRenderer _trail;
     [SerializeField] private Color _blueOctaneColor = Color.blue;
     [SerializeField] private Color _redOctaneColor = Color.red;
+    //[SerializeField] private ParticleSystem _goalEffect;
     void Start()
     {
         int selectedStartDirection = Random.Range(0, 3);
@@ -29,20 +30,22 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("LeftBorder"))
         {
             GameObject.FindAnyObjectByType<GameController>().AddScore(true);
-            
+
         }
         if (collision.gameObject.CompareTag("RightBorder"))
         {
             GameObject.FindAnyObjectByType<GameController>().AddScore(false);
-            
+
         }
         if (collision.gameObject.CompareTag("BlueOctane"))
         {
+            Debug.Log("tocou no octane azul");
             SetTrailColors(_blueOctaneColor, Color.white);
-            
+
         }
         if (collision.gameObject.CompareTag("RedOctane"))
         {
+            Debug.Log("tocou no octane vermelho");
             SetTrailColors(_redOctaneColor, Color.white);
 
         }
@@ -75,4 +78,5 @@ public class Ball : MonoBehaviour
             Debug.LogError("TrailRenderer component not found.");
         }
     }
+    
 }
